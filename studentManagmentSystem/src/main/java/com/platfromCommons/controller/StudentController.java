@@ -27,7 +27,7 @@ public class StudentController {
 	private StudentService sService;
 
 	// save student to database
-	@PostMapping("/")
+	@PostMapping("/")  // http://localhost:8080/students/
 	public ResponseEntity<Student> saveStudentHandler(@RequestBody Student student) {
 
 		Student savedStudent = sService.saveStudent(student);
@@ -37,7 +37,7 @@ public class StudentController {
 	}
 
 	// get student by unique student code
-	@GetMapping("/{usc}")
+	@GetMapping("/{usc}") // http://localhost:8080/students/usc
 	public Student getStudenthandler(@PathVariable("usc") Integer usc) {
 
 		return sService.getStudentByUsc(usc);
@@ -45,7 +45,7 @@ public class StudentController {
 	}
 
 	// get list of students
-	@GetMapping("/")
+	@GetMapping("/") //http://localhost:8080/students/
 	public ResponseEntity<List<Student>> getAllStudentHandler() {
 
 		List<Student> students = sService.getAllStudentDetails();
@@ -55,14 +55,14 @@ public class StudentController {
 	}
 
 	// delete student by unique student code
-	@DeleteMapping("/{usc}")
+	@DeleteMapping("/{usc}")  //http://localhost:8080/students/usc
 	public Student deleteStudentById(@PathVariable("usc") Integer usc) {
 
 		return sService.deleteStudentByUsc(usc);
 	}
 
 	// update student name by unique student code
-	@PutMapping("/{usc}")
+	@PutMapping("/{usc}")  //http://localhost:8080/students/usc
 	public ResponseEntity<Student> updateStudentNameHandler(@PathVariable("usc") Integer usc,
 			@RequestParam("name") String name) {
 
